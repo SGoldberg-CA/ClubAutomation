@@ -7,6 +7,8 @@ namespace ClubAutomation.Tests
     [TestClass]
     public class BaseTest
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public TestContext TestContext { get; set; }
 
         // Use TestInitialize to run code before running each test 

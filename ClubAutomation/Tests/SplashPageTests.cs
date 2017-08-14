@@ -12,6 +12,8 @@ namespace ClubAutomation.Tests
     [TestClass]
     public class SplashPageTests : BaseTest
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [TestMethod]
         [Description("TC #, Verifying successful user login through splash page")]
         [TestCategory("splashPage")]
@@ -41,6 +43,7 @@ namespace ClubAutomation.Tests
                     LocationSelector.ClickSelect();
                     DashboardPage.AssertLoggedUserName();
                     cbtapi.takeSnapshot(sessionId);
+                    log.InfoFormat($"{TestContext.TestName} - Test Passed");
                     cbtapi.setScore(sessionId, "Pass");
 
                 }
@@ -49,19 +52,30 @@ namespace ClubAutomation.Tests
                     var snapshotHash = cbtapi.takeSnapshot(sessionId);
                     cbtapi.setDescription(sessionId, snapshotHash, e.ToString());
                     cbtapi.setScore(sessionId, "Fail");
+                    log.ErrorFormat($"{TestContext.TestName} - Test Failed", e.Message, e.StackTrace);
+                    throw;
                 }
             }
             else
             {
-                SplashPage.GoTo();
-                SplashPage.AssertPageTitle();
-                SplashPage.EnterUsername();
-                SplashPage.EnterPassword();
-                SplashPage.ClickLoginBtn();
-                LocationSelector.SelectLocation();
-                LocationSelector.SelectPos();
-                LocationSelector.ClickSelect();
-                DashboardPage.AssertLoggedUserName();
+                try
+                {
+                    SplashPage.GoTo();
+                    SplashPage.AssertPageTitle();
+                    SplashPage.EnterUsername();
+                    SplashPage.EnterPassword();
+                    SplashPage.ClickLoginBtn();
+                    LocationSelector.SelectLocation();
+                    LocationSelector.SelectPos();
+                    LocationSelector.ClickSelect();
+                    DashboardPage.AssertLoggedUserName();
+                    log.InfoFormat($"{TestContext.TestName} - Test Passed");
+                }
+                catch(Exception e)
+                {
+                    log.ErrorFormat($"{TestContext.TestName} - Test Failed", e.Message, e.StackTrace);
+                    throw;
+                }
             }
         }
 
@@ -104,14 +118,23 @@ namespace ClubAutomation.Tests
             }
             else 
             {
-                SplashPage.GoTo();
-                SplashPage.AssertPageTitle();
-                SplashPage.EnterInvalidUsername();
-                SplashPage.EnterPassword();
-                SplashPage.ClickLoginBtn();
-                SplashPage.EmptyLoginErrorMessage();
-                SplashPage.UsernameRedBorder();
-                SplashPage.PasswordRedBorder();
+                try
+                {
+                    SplashPage.GoTo();
+                    SplashPage.AssertPageTitle();
+                    SplashPage.EnterInvalidUsername();
+                    SplashPage.EnterPassword();
+                    SplashPage.ClickLoginBtn();
+                    SplashPage.EmptyLoginErrorMessage();
+                    SplashPage.UsernameRedBorder();
+                    SplashPage.PasswordRedBorder();
+                    log.InfoFormat($"{TestContext.TestName} - Test Passed");
+                }
+                catch (Exception e)
+                {
+                    log.ErrorFormat($"{TestContext.TestName} - Test Failed", e.Message, e.StackTrace);
+                    throw;
+                }
             }
         }
 
@@ -154,14 +177,24 @@ namespace ClubAutomation.Tests
             }
             else 
             {
-                SplashPage.GoTo();
-                SplashPage.AssertPageTitle();
-                SplashPage.EnterUsername();
-                SplashPage.EnterInvalidPassword();
-                SplashPage.ClickLoginBtn();
-                SplashPage.EmptyLoginErrorMessage();
-                SplashPage.UsernameRedBorder();
-                SplashPage.PasswordRedBorder();
+                try
+                {
+                    SplashPage.GoTo();
+                    SplashPage.AssertPageTitle();
+                    SplashPage.EnterUsername();
+                    SplashPage.EnterInvalidPassword();
+                    SplashPage.ClickLoginBtn();
+                    SplashPage.EmptyLoginErrorMessage();
+                    SplashPage.UsernameRedBorder();
+                    SplashPage.PasswordRedBorder();
+                    log.InfoFormat($"{TestContext.TestName} - Test Passed");
+                }
+                catch (Exception e)
+                {
+                    log.ErrorFormat($"{TestContext.TestName} - Test Failed", e.Message, e.StackTrace);
+                    throw;
+                }
+
             }
         }
 
@@ -201,12 +234,21 @@ namespace ClubAutomation.Tests
             }
             else
             {
-                SplashPage.GoTo();
-                SplashPage.AssertPageTitle();
-                SplashPage.ClickLoginBtn();
-                SplashPage.EmptyLoginErrorMessage();
-                SplashPage.UsernameRedBorder();
-                SplashPage.PasswordRedBorder();
+                try
+                {
+                    SplashPage.GoTo();
+                    SplashPage.AssertPageTitle();
+                    SplashPage.ClickLoginBtn();
+                    SplashPage.EmptyLoginErrorMessage();
+                    SplashPage.UsernameRedBorder();
+                    SplashPage.PasswordRedBorder();
+                    log.InfoFormat($"{TestContext.TestName} - Test Passed");
+                }
+                catch (Exception e)
+                {
+                    log.ErrorFormat($"{TestContext.TestName} - Test Failed", e.Message, e.StackTrace);
+                    throw;
+                }
             }
         }
 
@@ -248,13 +290,22 @@ namespace ClubAutomation.Tests
             }
             else
             {
-                SplashPage.GoTo();
-                SplashPage.AssertPageTitle();
-                SplashPage.EnterPassword();
-                SplashPage.ClickLoginBtn();
-                SplashPage.EmptyLoginErrorMessage();
-                SplashPage.UsernameRedBorder();
-                SplashPage.PasswordRedBorder();
+                try
+                {
+                    SplashPage.GoTo();
+                    SplashPage.AssertPageTitle();
+                    SplashPage.EnterPassword();
+                    SplashPage.ClickLoginBtn();
+                    SplashPage.EmptyLoginErrorMessage();
+                    SplashPage.UsernameRedBorder();
+                    SplashPage.PasswordRedBorder();
+                    log.InfoFormat($"{TestContext.TestName} - Test Passed");
+                }
+                catch (Exception e)
+                {
+                    log.ErrorFormat($"{TestContext.TestName} - Test Failed", e.Message, e.StackTrace);
+                    throw;
+                }
             }
         }
 
@@ -296,13 +347,22 @@ namespace ClubAutomation.Tests
             }
             else
             {
-                SplashPage.GoTo();
-                SplashPage.AssertPageTitle();
-                SplashPage.EnterUsername();
-                SplashPage.ClickLoginBtn();
-                SplashPage.EmptyLoginErrorMessage();
-                SplashPage.UsernameRedBorder();
-                SplashPage.PasswordRedBorder();
+                try
+                {
+                    SplashPage.GoTo();
+                    SplashPage.AssertPageTitle();
+                    SplashPage.EnterUsername();
+                    SplashPage.ClickLoginBtn();
+                    SplashPage.EmptyLoginErrorMessage();
+                    SplashPage.UsernameRedBorder();
+                    SplashPage.PasswordRedBorder();
+                    log.InfoFormat($"{TestContext.TestName} - Test Passed");
+                }
+                catch (Exception e)
+                {
+                    log.ErrorFormat($"{TestContext.TestName} - Test Failed", e.Message, e.StackTrace);
+                    throw;
+                }
             }
         }
 
