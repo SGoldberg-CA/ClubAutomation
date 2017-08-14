@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ClubAutomation
+namespace ClubAutomation.Configurations
 {
     public class CBTApi
     {

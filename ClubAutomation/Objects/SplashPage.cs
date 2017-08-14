@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ClubAutomation.CommonObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System.Configuration;
 
@@ -19,7 +20,6 @@ namespace ClubAutomation.Objects
         public static void GoTo()
         {
             var splashPage = ConfigurationManager.AppSettings["SplashPage"];
-
             Driver.Instance.Navigate().GoToUrl(splashPage);
         }
 
@@ -34,6 +34,17 @@ namespace ClubAutomation.Objects
             usernameField.SendKeys(username);
         }
 
+        //selects username field and enters invalid username
+        public static void EnterInvalidUsername()
+        {
+            var loginForm = Driver.Instance.FindElement(By.Id("signin_login_form"));
+            var usernameField = loginForm.FindElement(By.Name("login"));
+            var username = ConfigurationManager.AppSettings["InvalidUsername"];
+
+            usernameField.Click();
+            usernameField.SendKeys(username);
+        }
+
         //selects password field and enters password
         public static void EnterPassword()
         {
@@ -43,6 +54,15 @@ namespace ClubAutomation.Objects
             Driver.Instance.FindElement(By.Id("password")).SendKeys(password);
         }
 
+        //selects password field and enters invalid password
+        public static void EnterInvalidPassword()
+        {
+            var password = ConfigurationManager.AppSettings["InvalidPassword"];
+
+            Driver.Instance.FindElement(By.Id("password-text")).Click();
+            Driver.Instance.FindElement(By.Id("password")).SendKeys(password);
+        }
+        
         //clicks login button 
         public static void ClickLoginBtn()
         {

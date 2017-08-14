@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace ClubAutomation.Objects
+namespace ClubAutomation.CommonObjects
 {
     class Page
     {
@@ -16,5 +16,7 @@ namespace ClubAutomation.Objects
                 return title;
             }
         }
+
+
     }
 }
